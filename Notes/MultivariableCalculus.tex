@@ -664,5 +664,83 @@
             |\frac{d\vec{c}(l)}{dl}|=&|\vec{c'}(t)|\cdot\frac{1}{|\vec{c'}(t)|}=1
         \end{align}
 
-
+    \subsection{Acceleration}
+        Acceleration is the second derivatives of length, hence the definition of second derivative can be expressed as below:\\
+        
+        Definition: Given $\vec{c}(t)$, $\vec{a}(t) = \vec{c''}(t)$ the acceleration of $\vec{c}$.\\
+        
+        Example:
+        
+        1) Ellipse
+        \begin{align}
+            \vec{c_1}(t) =& (\cos(t),2\sin(t)), t\in[0,2\pi]\\
+            \vec{c_1'}(t) =& (-\sin(t),2\cos(t))\\
+            \vec{c_1''}(t) =& (-\cos(t),-2\sin(t))
+        \end{align}
+        
+        2) Different para of the same Ellipse
+        \begin{align}
+            \vec{c_2}(t) =& (\cos(t^2),2\sin(t^2)), t\in[0,\sqrt{2\pi}]\\
+            \vec{c_2'}(t) =& 2t(-\sin(t^2),2\cos(t^2))\\
+            \vec{c_2''}(t) =& (-2\cos(t^2)-4t^2cos(t^2),4cos(t^2)-8t^2\sin(t^2))
+        \end{align}
+        
+        Facts:
+        \begin{enumerate}
+            \item We can have different parameterations of a curve
+            \item Velocity, acceleration depend on the para we choose in general
+            \item For different parameterization $\vec{c_1}$, $\vec{c_2}$ of the same curve, $\vec{c_1'}(t)\parallelsum\vec{c_2'}(t)$
+            \item "Unit Velocity" $\frac{\vec{c_1'}(t)}{|\vec{c_1'}(t)|}=\pm\frac{\vec{c_2'}(t)}{|\vec{c_2'}(t)|}$ are equal, the $\pm$ depends on the orientations of the $\vec{c_1}$ and $\vec{c_2}$.
+        \end{enumerate}
+        
+        Definition:Given $\vec{c}(t)$, assume $|\vec{c'}(t)|\neq0$, defined the unit tangent vector $\vec{T}(t) = \frac{\vec{c'}(t)}{|\vec{c'}(t)|}$. If $\vec{c_1}(t)$ and $\vec{c_2}(t)$ are two different parameter of a curve with the same orientation, their unit tangent vector equals.
+    \subsection{Curvature}
+        Idea: Curvature is a measure of how sharply a curve is bending at a point, it is the "rate of change" of directions along a curve. So a straight line has no curvature, and a slightly curved line has a small curvature.\\
+        
+        Definition: Quantitatively, if $\vec{c}(t)$ is parametered by length, (namely, $|\vec{c}(t)|=1$), then we define the curvature at $l=l_0$ to be $k(l_0)=|\vec{c''}(l_0)|=|\frac{d^2\vec{c}(l)}{dl^2}|_{l=l_0}$\\
+        
+        Remark: IF $\vec{c}(t)$ not parametered by length, then $|\vec{c''}(t)|$ is not the curvature.\\
+        
+        Explanation: a curve is like a highway and a parameterized function $\vec{c}(t)$ is like someone driving along this highway giving his position vector at a given time. Parameterized by length would be driving at a constant/normalized speed. A curvature is how sharp a turn is, measured by looking at how quickly the driver need to turn their steering wheel.\\
+        
+        Generally, $|\vec{c'}(l)| = 1\Rightarrow\vec{c'}(l)$ unit tangent, so $\vec{c''}(t)$ is curvature.\\
+        
+        Example:
+        
+        1)Find parameter by length
+        \begin{align}
+            \vec{c}(t) =& \vec{a} + t\vec{v}\\
+            \text{Constant vectors:\;}& \vec{a} = (1,2,3),\vec{v}=(0,2,1)\nonumber\\
+            \text{Length function\;}l(t) =& \int^{t}_{0}|\vec{c'}(x)|dx\\
+            =& \int^{t}_{0} |\vec{v}|dx,\;\;\vec{v}=(0,2,1)\\
+            l =& l(t) = \sqrt{5} t\\
+            t =& t(l) = \frac{l}{\sqrt{5}}
+        \end{align}
+        Curvature would be zero since it is a line, its second derivative would be a zero.\\
+        
+        2) Find the curvature for a circle
+        \begin{align}
+            \vec{c}(t) =& (r\cos(t),r\sin(t)), r>0 \text{\;circle\;} x^2 + y^2 = r^2\\
+            \text{length function\;\;}l(t) =& \int^{t}_{0} |\vec{c'}(x)|dx = rt\\
+            t(l) =& \frac{l}{t}\\
+            \vec{c}(l) =& (r\cos(\frac{l}{r}),r\sin(\frac{l}{r}))\\
+            \vec{c''}(l) =& (-\frac{\cos(l/r)}{r},-\frac{\sin(l/r)}{r})\\
+            k(l) =& |\vec{c''}(l)|\\
+            =& \sqrt{(-\frac{\cos(l/r)}{r})^2+(-\frac{\sin(l/r)}{r})^2} = \frac{1}{r}
+        \end{align}
+        Curvature for circle of radius $r =\frac{1}{r}$\\
+        
+        Second Definition of Curvature:
+        
+        If $\vec{c}(t)$ any parameteric curve, $\vec{c'}(t)\neq0$, recall the unit tangent vector $\vec{T} = \frac{\vec{c'}(t)}{|\vec{c'}(t)|}$, then define curvature $k(t)=\frac{|\vec{T'}(t)|}{|\vec{c'}(t)|}$
+        
+        Theorem: Definition 1 and 2 of curvature are the same.
+        \begin{align}
+            \vec{c'}(t) = \frac{d\vec{c}(t(l))}{dt}\\
+            =&\frac{d\vec{c}(t)}{dt}\cdot\frac{dt}{dl}\\
+            =&\frac{\vec{c'}(t)}{|\vec{c}(t)|} = \vec{T}\\
+            k(l(t)) = |\vec{c''}(t)| =& |\frac{d^2\vec{c}}{dl^2}| = |\frac{d\vec{T}(t(l))}{dl}|\\
+            =&\frac{d\vec{c}(t)}{dt}\cdot\frac{dt}{dl}\\
+            =&|T'(t)|\cdot\frac{}{|\vec{c'}(t)|} = k(t)
+        \end{align}
 \end{document}
