@@ -741,6 +741,234 @@
             =&\frac{\vec{c'}(t)}{|\vec{c}(t)|} = \vec{T}\\
             k(l(t)) = |\vec{c''}(t)| =& |\frac{d^2\vec{c}}{dl^2}| = |\frac{d\vec{T}(t(l))}{dl}|\\
             =&\frac{d\vec{c}(t)}{dt}\cdot\frac{dt}{dl}\\
-            =&|T'(t)|\cdot\frac{}{|\vec{c'}(t)|} = k(t)
+            =&|T'(t)|\cdot\frac{1}{|\vec{c'}(t)|} = k(t)
+        \end{align}
+        
+        Using the second definition to find the curvature of the parabola $y = x^2$
+        \begin{align}
+            \vec{c} =& (t,t^2)\\
+            \vec{c'}(t) =& (1,2t)\\
+            \vec{T}(t) =& \frac{(1,2t)}{\sqrt{1+4t^2}}\\
+            \vec{T'}(t) =& \frac{(0,2)}{\sqrt{1+4t^2}} + (1,2t)\cdot((a+4t^2)^{-\frac{1}{2}})'\\
+            =& \frac{(-4t,2)}{(1+4t^2)^\frac{3}{2}}\\
+            |T'(t)| =& \frac{\sqrt{4+16t^2}}{(1+4t^2)^{\frac{3}{2}}}\\
+            =& \frac{2}{1+4t^2}\\
+            K(t) =& |T'(t)|\cdot\frac{1}{|c'(t)|}\\
+            =& \frac{2}{(1+4t^2)} \cdot\frac{1}{\sqrt{1+4t^2}}\\
+            =& 2\cdot(1+4t^2)^{-\frac{3}{2}}
+        \end{align}
+        As $x$ approaches $\infty$, the curvature approaches 0, $y=x^2$ became more like a straight line.\\
+        
+        Osculating Plane and Circle
+        \begin{enumerate}
+            \item Derivative --- Tangent line
+            \item Curvature  --- Osculating Circle
+        \end{enumerate}
+        
+        Observations:
+        
+        1) If $\vec{c}(l)$ parameterized by length, then
+        \begin{align}
+            \vec{c'}(l) \perp&\; \vec{c''}(l)\\
+            \because (\vec{c'}(l)\cdot\vec{c'}(l))' =& (|\vec{c}(l)|^2)' = (1)'\\
+             \vec{c'}(l)\cdot\vec{c''}(l) + \vec{c'}(l)\cdot\vec{c''}(l)=& 0\\
+             \Rightarrow \vec{c'}(l)\cdot\vec{c''}(l) =& 0
+        \end{align}
+        so second derivative is the normal and the first derivative is the tangent.
+        
+        2) If $\vec{c}$(t) is any parameterized curve, its unit tangent vector T and T' is
+        \begin{align}
+            \vec{T}(t) =& \frac{\vec{c'}(t)}{|\vec{c'}(t)|}\\\
+            \because (\vec{T}(t)\cdot\vec{T}(t))' =& (|\vec{T}(t)|^2)' = (1)'\\
+            \Rightarrow \vec{T}(t)\cdot\vec{T'}(t) =& 0\\
+            \therefore \vec{T}(l) \perp&\; \vec{T'}(l)
+        \end{align}
+        
+        Definition: Osculating Plane: Given $\vec{c}(t),\;\vec{c}(t)\neq0$, then the osculating plane is the plane spanned by $\vec{T}(t)$ and $\vec{T'}(t)\\$
+        
+        Recall that we computed for a circle with radius $r$ its curvature $k = \frac{1}{r}$, therefore, if have a $\vec{c}(t)$ with $k(t_0) = k$, then at this point, the curve $\vec{c}(t)$ is "modeled" by a circle of radius $\frac{1}{k}\\$
+        
+        Definition: Osculating Circle: Given $\vec{c}(t), \vec{c'}(t)\neq0$, then the osculating circle of $\vec{c}$ at $t=t_0$ is a circle on the osculating plane at $t=t_0$ and has radius $\frac{1}{k(t_0)}$, and the tangent to the curve. (The best approximation of the curve at that point by the circle)\\
+        
+        Example: Find the equation of the osculating plane at $\vec{c}(\pi) = (-a,0,b\pi)$ of $\vec{c}(t) = (a\cos(t), a\sin(t), bt)\;,t\geq0;\;a,b>0$, 
+        \begin{align}
+            \vec{T}=&\frac{\vec{c'}(t)}{|\vec{c'}(t)|}=\frac{(-a\sin(t), a\cos(t), b)}{\sqrt{a^2 + b^2}}\\
+            \vec{T'} =& \frac{(-a\cos(t), -a\sin(t), 0)}{\sqrt{a^2 + b^2}}\\
+            \text{Osc.Plane} =& \vec{T}\times\vec{T'}\\
+            =& \frac{1}{a^2+b^2} (ab\sin(t), -ab\cos(t),a^2)|_{t=\pi}\\
+            =& \frac{1}{a^2+b^2}(0,ab,a^2)\\
+            \text{calculating plane at given point}\;\;&\nonumber\\
+            a^2b\pi =& 0x + aby + a^2z
+        \end{align}
+    \subsection{Higher order derivatives and Taylor expansions}
+        Recall partial derivatives of $F(x,y)$ by x and y denoted by $F_x$ and $F_y$, second order derivative = $F_{xx}$ and $F_{yy}$, first x then y $F_{xy}$ and first y then x $F_{yx}$, vise versa. \\
+        
+        Theorem: If $F(x,y)$ differentiable and $F_{xy}$, $F_{yx}$ continuous, $F_{xy}=F_{yx}$, hence the order can be switched\\
+        
+        Example: $f(x,y,z) = x^2e^{y^2-x}+x^2yz^2-cos(x^2+y^2),\; f_{xzzy} = ?$ switch order, try finding $f_{zzxy}$ instead
+        \begin{align}
+            df/dz = f_z = 2zx^2y \Rightarrow fzz = {2x^2y} \Rightarrow f_{zzxy} = 4x
+        \end{align}
+    \subsection{Taylor Expansions}
+        One Variable: $y = f(x),\;f'(x) = $, tangent line of graph of the function, its linear approximation at point $x=x_0$, equation of tangent line is $y = f(x_0) + f'(x_0)(x-x_0)$. Higher order $f'(x)\rightarrow$ higher degree approximation. 
+        
+        \begin{align}
+            f(x) - f(x_0) =& \int^{x}_{x_0} f'(t)dt\\
+            \int u'v =& uv - \int v'u,\;u=t,v=f'(t)\\
+            =&tf'(t)|_{x_0}^{x} - \int^{x}_{x_0}tdf'(t)\text{\;by parts}\\
+            =&[xf'(x) - x_0 f'(x_0)] - \int^{x}_{x_0}tf''(t)dt\\
+            =&(xf'x - xf'(x_0)) + (xf'x_0 - x_0f'(x_0))- \int^{x}_{x_0}tf''(t)dt\\
+            =&(x-x_0)f'(x_0)+x(f'(x)-f'(x_0)) - x\int^{x}_{x_0}tf''(t)dt\\
+            =&f'(x_0)(x-x_0) + x\int^{x}_{x_0}f''(t)dt - \int^{x}_{x_0}tf''(t)dt\\
+            f(x) =& f(x_0) + f'(x_0)(x-x_0) + \int^{x}_{x_0}(x-t)f''(t)dt\\
+        \end{align}
+        This is the 1 st Taylor expansion where $f(x_0) + f'(x_0)(x-x_0)$ is the 1st order approximation, a tangent line, and $\int^{x}_{x_0}(x-t)f''(t)dt$ is the 1st order remainder. error/diff. to linear approx.\\
+        
+        We can continue to get a higher order Taylor expansion using integration by parts by setting $v=f''(t)$ and $u' = (x-t)$ which would yield:
+        \begin{align}
+            f(x) =& f(x_0)+f'(x_0)(x-x_0)\\\nonumber
+            &+ f''(x_0)\cdot\frac{(x-x_0)^2}{2} \\\nonumber
+            &+ \int^{x}_{x_0}(x-t)f'''(t)\cdot\frac{(x-t)^2}{2}dt
+        \end{align}
+        
+        Theorem: if $f(x)$ differentiable, then $\frac{d^n(f(x))}{dx^n}$ exists for all n. Hence the n-th order of the Taylor expansion would be:
+        \begin{align}
+            f(x) =& f(x_0)+\frac{f'(x_0)(x-x_0)}{1!} + \frac{f''(x_0)(x-x_0)}{2!} \dots\\\nonumber
+            &+ f^{(n)}(x_0)\frac{(x-x_0)^n}{n!} + \int^{x}_{x_0}(x-t)f^{(n+1)}(t)\cdot\frac{(x-t)^n}{n!}dt
+        \end{align}
+        Example:
+        
+        Find the 2nd order Taylor expansion at $x = 0$ of $f(x) = x+e^{-2x}$ USe that to approximate the value $f(0.075) = 0.075 + e^{-0.15}$ and estimate the error.
+        \begin{align}
+            f'(x) =& (1-2e^{2x}), f''(x) = 4e^{-2x}\\\nonumber
+            f(x) =& f(0) + f'(0)(x-0)\\\nonumber
+            &+ \frac{f''(0)(x-0)^2}{2}\\\nonumber
+            &+ \int^{x}_{0}f'''(t) \frac{(x-t)^2}{2}dt\\\nonumber
+            f(0.075)\approx&1-(0.075)+2(0.075)^2
+        \end{align}
+        Error given y the remainder $R(x)$, a bound for the error
+        \begin{align}
+            \text{error}\leq|R(x)| \leq& \left|\int^{x}_{0}-8e^{2t}\cdot\frac{(x-t)^2}{2}dt\right|\\
+            \leq& 4x^2 (x-0) = 4x^3 = (4\cdot(0.075)^3)
+        \end{align}
+        For 2 dimension, the second order expansion of $F(x,y)$ at $(x_0,y_0)$ is:
+        \begin{align}
+            F(x,y) =& F(x_0,y_0) \\\nonumber
+            &+ \frac{1}{1!}\left[\frac{\sigma F}{\sigma x}(x_0,y_0)(x-x_0) + \frac{\sigma F}{\sigma y}(x_0,y_0)(y-y_0)\right]\\\nonumber
+            &+ \frac{1}{2!}\left[\frac{\sigma^2 F}{\sigma x^2}(x_0,y_0)(x-x_0) + \frac{\sigma^2 F}{\sigma y^2}(x_0,y_0)(y-y_0)\right.\\\nonumber
+            &+ \left. 2\frac{\sigma ^2 F}{\sigma x\sigma y}\right] + R_2(x,y)
+        \end{align}
+        Example: Find the second Taylor expansion of $f(x,y) = sin(x+y) + cos(x-3y)$ at (0,0)
+        \begin{align}
+            f_x =& \cos(x+y)-\sin(x-3y)\\
+            f_y =& \cos(x+y)+3\sin(x-3y)\\
+            f_{xx} =& -\sin(x+y) - \cos(x-3y)\\
+            f_{xy} =& -\sin(x+y) + 3\cos(x-3y)\\
+            f_{yy} =& -\sin(x+y) - 9\cos(x-3y)\\
+            f(x,y) =& f(0,0) + f_x(0,0)x + f_y(0,0)y\\
+            +& \frac{1}{2}\left[f_{xx}x^2 + f_{yy}y^2 + 2f_{x,y}xy\right] + R_2(x,y)\\
+            =& 1 + x + y + \frac{1}{2}(-x^2 - 9y^2 + 6xy) + R_2(x,y)
+        \end{align}
+        Second Approximation, Taylor Polynomial.\\
+        
+        For extreme values of F(x,y): Recall that given y = f(x), differentiable, n-th Taylor expansion at $x = x_0$
+        \begin{align}
+            f(x) =& f(x_0) + f'(x_0)(x-x_0) + f''(x_0)\cdot\frac{(x-x0)^2}{2}\;\dots\\
+            &+ f^{(n)}(x_0)\frac{(x-x_0)^n}{n!}\;\text{Taylor polynomial}\\
+            &+ \int^{x}_{x_0}f^(n+1)(t)\frac{(x-t)^n}{n!}dt\;R_n(x)\text{remainder}
+        \end{align}
+        Taylor Expansion for $F(x,y)$ at $(x_0,y_0)$
+        \begin{align}
+            F(x,y) =& F(x_0,y_0) + F_x(x_0,y_0)x + F_y(x_0,y_0)y\\
+            &+ F_{xx}(x_0,y_0)\frac{x^2}{2} + F_{xy}(x_0,y_0)\frac{xy}{2}\\
+            &+ F_{yx}(x_0,y_0)\frac{yx}{2} + F_{yy}(x_0,y_0)\frac{y^2}{2}\\
+            &+ R_2(x,y)
+        \end{align}
+        Recall: for $y=f(x)$, critical points, $f'(x_0) = 0$ are candidates for local max and local min.
+        \begin{enumerate}
+            \item $f''(x_0) > 0$ local min
+            \item $f''(x_0) < 0$ local max
+            \item $f''(x_0) = 0$ inconclusive
+        \end{enumerate}
+        if $x_0$ is critical point, first derivative term $f'(x_0) = 0$ removed from polynomial. 
+        
+        The two variable are F(x,y). Definition F(x,y) differentiable, then say $(x_0,y_0)$ is a critical point if $\nabla F(x_0,y_0) = 0$.
+        
+        Recall equation of tangent plane
+        \begin{align}
+            z = F(x_0,y_0) + F_x(x_0,y_0)(x-x_0) + F_y(y-y_0)
+        \end{align}
+        Tangent plane is horizontal. Definition: for $F(x,y)$, define the Hessian matrix.
+        \begin{equation}
+            \begin{pmatrix}
+                F_{xx} & F_{xy}\\
+                F_{yx} & F_{yy}
+            \end{pmatrix}(x_0,y_0)
+        \end{equation}
+        Define the discrimanant, $(x_0,y_0)$ is critical point. 
+        \begin{equation}
+            D(x_0,y_0) = det
+            \begin{pmatrix}
+                F_{xx}(x_0,y_0) & F_{xy}(x_0,y_0)\\
+                F_{yx}(x_0,y_0) & F_{yy}(x_0,y_0)
+            \end{pmatrix}(x_0,y_0)
+            = F_{xx}F_{yy} - F_{xy}F_{yx}
+        \end{equation}
+        Theorem (2nd derivative test): Suppose $(x_0,y_0)$ is a critical point, then
+        \begin{enumerate}
+            \item If $D(x_0,y_0)>0$ and $F_{xx}>0$ or $(F_{yy} > 0)$, then $(x_0,y_0)$ is a local minimum
+            \item If $D(x_0,y_0)>0$ and $F_{xx}<0$ or $(F_{yy} < 0)$, then $(x_0,y_0)$ is a local maximum
+            \item if $D(x_0,y_0)<0$, then $(x_0,y_0)$ is a saddle point.
+            \item if $D(x_0,y_0)=0$, then it is inconclusive.
+        \end{enumerate}
+        Find and classify all critical points of $F(x,y) = x^3 -3x^2 -3y^2 + 3xy^2$
+        \begin{align}
+            F_x =& 3x^2 - 6x + 3y^2 = 0\\
+            F_y =& -6y + 6xy = 0\\
+            \Rightarrow\;y=&0\;or\;x=1 \text{\;giving two critical point}\\
+            y=0,\Rightarrow&(0,0),(2,0)\\
+            x=1,\Rightarrow&(1,1),(1,-1)
+        \end{align}
+        Use Second derivative to test for the four critical points
+        \begin{align}
+            D(x,y) =& F_{xx}F_{yy} - F_{xy}^2\\
+            D(1,1) =& \Rightarrow\text{ is a saddle point}\\
+            D(1,-1)=& \Rightarrow\text{ is a saddle point}\\
+            D(0,0) =& \Rightarrow\text{ is local max}\\
+            D(2,0) =& \Rightarrow\text{ is local min}
+        \end{align}
+        Why is this true?
+        
+        From the second Taylor expansion, at a critical point, the dominant part:
+        \begin{align}
+            F_{xx}(x_0,y_0)(x-x_0)^2 + 2F_{xy}(x_0,y_0)(x-x_0)(y-y_0)+F_{yy}(y-y_0)^2
+        \end{align}
+        Homogeneous degree 2 polynomial in 2 variables:
+        \begin{align}
+            P(x,y) =& ax^2 + 2Cxy + by^2\\
+            =&a(x^2 + \frac{2c}{a}xy + \frac{b}{a}y^2)\\
+            =&a((x-\frac{c}{a}y)^2 + \frac{ab-c^2}{a^2}y^2)\\
+            =&a((x-\frac{c}{a}y)^2 + \frac{ab-c^2}{a^2}y^2)\\
+            \Delta =& ab-c^2 > 0, \text{then}\begin{cases}
+                x'=x-\frac{c}{a}y\\
+                y'=x-\frac{\sqrt{ab-c^2}}{a}y
+            \end{cases}\\
+            =& a((x')^2 + (y')^2)\\
+            &\Rightarrow a > 0 \text{ local min, }a < 0 \text{ local max}\\
+            \text{If }\Delta <& 0 \begin{cases}
+                x'=x-\frac{c}{a}y\\
+                y'=x-\frac{\sqrt{c^2-ab}}{a}y
+            \end{cases}
+        \end{align}
+        \begin{align}
+            \text{then } P(x,y) =& P(x', y') = a((x')^2-(y')^2)\\
+            a>&0 \text{ saddle point}
+        \end{align}
+        Apply this to $F_{xx}(x_0,y_0)(x-x_0)^2 + 2F_{xy}(x_0,y_0)(x-x_0)(y-y_0)+F_{yy}(y-y_0)^2$
+        \begin{align}
+             a =& F_{xx}(x_0,y_0)(x-x_0)^2\\
+             b =& F_{yy}(x_0,y_0)(x-x_0)^2\\ 
+            2c =& 2F_{xy}(x_0,y_0)(x-x_0)^2\\
+            ab-c^2 =& D(x,y)
         \end{align}
 \end{document}
