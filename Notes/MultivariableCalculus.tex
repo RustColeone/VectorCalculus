@@ -971,4 +971,180 @@
             2c =& 2F_{xy}(x_0,y_0)(x-x_0)^2\\
             ab-c^2 =& D(x,y)
         \end{align}
+        Global Extreme Values for F(x,y).
+        
+        Recall local max/min:
+        \begin{enumerate}
+            \item Find critical points $\nabla F(x_0,y_0)=\vec{0}$
+            \item Use second derivatives to test the critical points.
+        \end{enumerate}
+        For Global Extreme values:\\
+        
+        Example: \\
+        
+        1) Find global min and max of $f(x,y) = x^3-3xy + 3y^2$ defined on the rectangle $D = \{(x,y)|0\leq x\leq 1, 0\leq y \leq2\\$ First, find local critical point
+        \begin{align}
+            f_x =& 3x^2 - 3y = 0\\
+            f_y =& -3x + 6y = 0\\
+            &\Rightarrow x = 2y\\
+            \text{plug in to }f_x:\;0 =& 3(4y^2-y)\\
+            0 =& y(4y-1)\\
+            &\Rightarrow y=0 \text{ or } y=\frac{1}{4}\\
+            \therefore (0,0)\;\&\;(0.5,0.25)& \text{ two critical point}\\
+            \text{Hessian Matrix }D(x,y) =& det\left[\begin{array}{cc}
+                                                fxx & fxy\\
+                                                fxy & fyy
+                                            \end{array}\right]\\
+            =& f_{xx} - f_{xy}^2 = 36x-9 = 9(4x - 1)\\
+            &\Rightarrow D(0,0) = -9 < 0,\text{ saddle, neither max/min}\\
+            &\Rightarrow D(0.5,0.25) = 9 > 0,\;f_{xx}(0.5,0.25) = 3>0\\
+        \end{align}
+        Need to compare with boundary values.
+        \begin{align}
+            \text{Side 1: }\{x=0,\;& 0\leq y\leq2\}\\
+            f(x,y) =& x^3 - 3xy + 3y^2|{x=0}\\
+            f(0,y) =& 3y^2 \Rightarrow\text{ max 12 min 0}\\
+            \text{Side 2: }\{y=0,\;& 0\leq x\leq1\}\\
+            f(x,0) =& x^3,\text{ max 1 min 0}\\ 
+            \text{Side 3: }\{x=1,\;& 0\leq y\leq2\}\\
+            f(1,y) =& 1-3y+3y^2,\text{ max 7 min 0.25}\\
+            \text{Side 4: }\{y=2,\;& 0\leq x\leq1\}\\
+            f(x,2) =& x^3-6x+12,\text{ max 12 min 7}
+        \end{align}
+        Hence global max 12 at (0,2) and -1/16 at (0.5,0.25)
+        
+        2)Find for the function $f(x,y) = 2x^2 + 2y^2 - x + y$ on disk $D = \{(x,y): x^2 + y^2 \leq 1\}$ its global Max and min/min
+        \begin{align}
+            f_x =& 4x - 1, f_y = 4y + 1,\\
+            f_x =& 0\text{ and }f_y = 0\rightarrow (x=1/4,y=-1/4)\\
+            f_{xx} =& 4, f_{yy} = 4, f_{xy} = 0\\
+            D(x,y) =& 16-0^2 = 16 > 0, f_{xx} = 4 > 0\\
+            \text{see } (x= 1/4, y=-1/4)&\text{ is local min}\\
+            \text{Parameterize the } & \text{ bounding (unit circle)}\nonumber\\
+            \vec{c}(t) =& (\cos(t),\sin(t)), t\in[0,2\pi]\\
+            \text{plugin } f(\cos(t),\sin(t)) =& 2-\cos(t)+\sin(t),\;t\in[0,2\pi]\\
+            f'(t) =& \sin(t) + \cos(t) = 0\\
+            -1 =& \tan(t)\\
+            \therefore \text{critical points} t =& \frac{3\pi}{4}, t = \frac{7\pi}{4}\\
+            f(t) =& 2-cos(t) + sin(t)\text{ at } 0 \& 2\pi = 1 \& 1\\
+            f(\frac{3\pi}{4}) =& 2-\cos(\frac{3\pi}{4})+\sin(\frac{3\pi}{4})=2+\sqrt{2}\\
+            f(\frac{7\pi}{4}) =& 2-\sqrt{2}\text{ min on boundary}
+        \end{align}
+        
+        Recall have local min at (0.25,-0.25)\\
+        Global max at $(-\frac{\sqrt{2}}{2},\frac{\sqrt{2}}{2}),\;2+ \sqrt{2}$\\
+        Global max at $(\frac{1}{4},-\frac{1}{4}),\;-\frac{1}{4}$\\
+        Optimization with constraint --- Lagrangian multiplier.\\
+        
+        Given f(x,y), find max/min with a constraint g(x,y) = k, k = a fixed number. The langrangian multiplier method would be:
+        
+        \begin{align}
+            \text{Step 1} \begin{cases}
+                \nabla f = \lambda \nabla g, \lambda\text{ = constant}\\
+                g(x,y) = k
+            \end{cases}
+        \end{align}
+        solve this system of equation to get (x,y)\\
+        Step 2, plug in (x,y) into f(x,y)\\
+        
+        Example: $f(x,y) = 4xy$, find max/min with condition $x^2 + y^2 = 4$
+        \begin{align}
+            g(x,y) =& x^2 + y^2, g(x,y) = 4\\
+            f\&g=&\begin{cases}
+                \nabla f =& (2y,2x) = \lambda\cdot\nabla g = (2x,2y)\\
+                g(x,y) =& 4 = x^2 + y^2
+            \end{cases}\\
+            \therefore 2y =& \lambda 2x \rightarrow \lambda = \frac{y}{x}\\
+             2x =& \lambda 2y \rightarrow \lambda = \frac{x}{y}\\
+            \therefore x^2 =& y^2 \& g(x,y):x^2+y^2 = 4, x^2 = y^2 = 2\\
+            x, y =& \pm \sqrt{2}\text{, 4 solutions, max 8, min -8}
+        \end{align}
+        Why does it work? at max $\nabla g \parallelsum \nabla f$
+    \subsection{Vector Field and Flow}
+        Definition: A vector field $\vec{F}:\R^m \rightarrow \R^m$
+        \begin{enumerate}
+            \item Example 1: $\vec{F}(x,y) = (x,y), \R^2\rightarrow \R^2$
+            \item Example 2: $\vec{F}(x,y) = (-y,x) \R^2\rightarrow \R^2$
+            \item Example 3: $\vec{F}(x,y,z)=(x^3,xy,e^{xyz})\R^3\rightarrow \R^3$
+        \end{enumerate}
+        Definition: (Flow/Integral Curve) Given $\vec{F}:\R^m \rightarrow \R^m$, a flow of $\vec{F}$ is  curve $\vec{C}(t):\R^1\rightarrow\R^m$ such that $\vec{C'}(t) = \vec{F}(\vec{C}(t))\\$
+        
+        Example:
+        \begin{align}
+            \vec{F}(x,y) = (-y,x)
+        \end{align}
+        Verify that the curve $\vec{C}(t) = (cos(t),sin(t))$, is a flow/integral curve of $\vec{F}$ by checking if $\vec{C'}(t) = \vec{F}(\vec{C}(t))$
+        \begin{align}
+            \vec{C'}(t) &= (-sin(t),cos(t))\\
+            \vec{C'}(t) &\equiv \vec{F}(\vec{C}(t))
+        \end{align}
+        
+        Remark: Finding flows of a vector field is the focus of differential equations.
+        
+        An important class of example of vector field is given by $\nabla F$ where $F:\R^m\rightarrow\R^1$, $\nabla F=(\frac{\sigma F}{\sigma x},\frac{\sigma F}{\sigma y},\frac{\sigma F}{\sigma z}):\R^3\rightarrow\R^3$
+        
+        Looking at $\nabla F$ tells us something about F
+        \begin{enumerate}
+            \item $\nabla F$ is the direction along which F changes most dramatically.
+            \item $\nabla F \perp$ level sets ($F(x,y,z) = c$).
+        \end{enumerate}
+        Definition (Divergence and Curl): Given $\vec{F}\R^3\rightarrow \R^3$, $\vec{F} = (F_1(x,y,z),F_2(x,y,z),F_3(x,y,z))$. 
+        
+        Define the divergence of $\vec{F}$
+        \begin{enumerate}
+            \item div $\vec{F} = (\frac{\sigma F}{\sigma x},\frac{\sigma F}{\sigma y},\frac{\sigma F}{\sigma z})$
+            \item div $\vec{F} = \R^3\rightarrow \R^1$ a scalar function
+        \end{enumerate}
+        Define the curl of $\vec{F}$
+        \begin{enumerate}
+            \item Curl $\vec{F} = \left[\begin{array}{c}
+                \sigma/\sigma x  \\
+                \sigma/\sigma y  \\
+                \sigma/\sigma z  
+            \end{array}\right] \times \left[\begin{array}{c}
+                F_1  \\
+                F_2  \\
+                F_3  
+            \end{array}\right]$
+            \item div $\vec{F} = \R^3\rightarrow \R^3$ a vector function
+        \end{enumerate}
+        Easier way to memorize these 2 notations:$\nabla$ is a vector of differential operators $<\frac{\sigma }{\sigma x},\frac{\sigma }{\sigma y},\frac{\sigma }{\sigma z}>$
+        
+        Hence $\nabla F$ means the gradient of F. So $div\vec{F}$ is the dot product between $\nabla$ and $\vec{F}$: $div\vec{F} = \nabla \cdot \vec{F}$
+        
+        Hence $\nabla F$ means the gradient of F. So $curl\vec{F}$ is the cross product between $\nabla$ and $\vec{F}$: $curl\vec{F}=\nabla \times \vec{F}$
+    
+        Similar for two dimension curves, except for the curl, we add a zero to the third dimension making the original function a function plot on a plane in the three dimensional plot. $Curl\vec{F} = curl(F_1,F_2,0)$, and the result will be $(0,0,\frac{\sigma F_2}{\sigma x}-\frac{\sigma F_1}{\sigma y})$, and the scalar curl for $\vec{F}:\R^2\rightarrow\R^2$ is defined as $\frac{\sigma F_2}{x}-\frac{\sigma F_1}{y}$, a scalar function.\\
+        
+        Meanings of divergence and curl:
+        
+        Divergence of $\vec{F}$ at $(x_0,y_0)$ is measuring the change of density at this point. Change of volume of flows 
+        \begin{align}
+            =& F_1(x+\Delta x,y)\Delta y - F_1(x, y)\Delta x\\
+            &+\frac{F_2(x,y+\Delta y)\delta x-F_2(x,y)\Delta x}{\Delta x\Delta y}\\
+            \approx &\frac{\sigma F_1}{\sigma x}+\frac{\sigma F_2}{\sigma y}div\vec{F}
+        \end{align}
+        Curl of $\vec{F}:\R^2\rightarrow\R^2$, scalar curl = $\frac{\sigma F_2}{x}-\frac{\sigma F_1}{y}$. is the measurement of the tendency of spin at a point. The Jacobian matrix $D\vec{F}$ capture the instant change of $\vec{F}$ In particular, $D\vec{F}$ capture the infinitely minimal tendency of spin at the point.
+        
+        A bit about Linear Algebra
+        
+        If The Jacobian matrix $D\vec{F}$ is symmetric, i.e.$D\vec{F} = D\vec{F}^T$, i.e. $\frac{\sigma F_2}{sigma x} = \frac{\sigma F_1}{sigma y}$. Then $D\vec{F}$ introduces no rotation. Curl measures how far away $D\vec{F}$ from being symmetric, the more asymmetric, the more $D\vec{F}$ rotates a basis. 
+        
+        Curl in third dimension:
+        \begin{enumerate}
+            \item $Curl\vec{F}$ = the axis of rotation of $D\vec{F}$. 
+            \item $|Curl\vec{F}|$  = rate of rotation of $D\vec{F}$ the instant rate of rotation of $\vec{F}$ at the point.
+        \end{enumerate}
+        
+        Relationship between $\nabla,\;div,\;curl\\$
+        \begin{align}
+            \R^1 -(\nabla)\rightarrow \R^3 -(curl)\rightarrow \R^3 -(div)\rightarrow \R^1
+        \end{align}
+        $\R^1 -(\nabla)\rightarrow \R^3$ are both tangent of functions.
+        \begin{align}
+            curl(\nabla f) =& \vec{0}\\
+            div(curl \vec{F}) =& 0
+        \end{align}
+        
+        
 \end{document}
