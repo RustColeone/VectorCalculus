@@ -1146,5 +1146,74 @@
             div(curl \vec{F}) =& 0
         \end{align}
         
+    \subsection{Integration along a path}
+    
+        Definition: A path (parametric curve) $\vec{c}:[a,b]\rightarrow \R^m$ is $C'$ if $\vec{C}(t)$ exists and is continuous
+        
+        Definition: A path $\vec{c}:[a,b]\rightarrow \R^m$ is piece-wise $C'$ if can divide $[a,b]$ into finitely many sub-integrals. $[a_1 = a_1, a_2]$, $[a_2, a_3]\dots$, $[a_{n-1}, a_n = b]$ such that $\vec{C} on [a_i,a_{i+1}]$ is $C'$.
+        
+        Convention:From now on, we assume a path $\vec{C}(t)$ is always piece-wise $C'$.
+        
+        Definition: If $\vec{C}(t)$ is a piece-wise $C'$ path, we said that
+        \begin{enumerate}
+            \item $\vec{C}(t)$ is simple if it does not intersect itself or equivalently, $\vec{c}:[a,b]\rightarrow \R^m$ is an 1 to 1.
+            \item $\vec{C}(t)$ is simple closed path/curve if there exists $\vec{C}(a) = \vec{C}(b)$ and does not intersect itself except for the 2 end points. 
+        \end{enumerate}
+        
+        Definition: for $\vec{C}:[a,b]\rightarrow \R^m$, $f(x_1\dots x_m): \R^m \rightarrow \R^1$ then integral of f along $\vec{C}$ is denoted by:
+        \begin{align}
+            \int_{C}f ds=\int_{a}^{b}f\vec{C}(t)\cdot|\vec{C'}(t)|dt
+        \end{align}
+        Example: Finding the integral of $f(x,y,z) = xyz$ along the path $\vec{C}(t)=(-\sin(t),\sqrt{2}\cos(t),sin(t)), t\in[0,\pi/2]$
+        \begin{align}
+            \int_c fds =& \int_{0}^{\pi/2}f(\vec{C}(t))\cdot|\vec{C'}(t)|dt\\
+            =&\dots\\
+            =&-2\int_{0}^{\pi/2} \sin^2(t)\cos(t)dt\\
+            =&-\frac{2}{3}
+        \end{align}
+        Theorem: Path integral of a function does not depend on the parametrization of the path.
+        
+        Namely, $\vec{C_1}(t)$ and $\vec{C_2}(t)$ are 2 different parameter of the same path, $\int_{C_1} fds = \int_{C_2} fds\\$
+        
+        The integration of vector field along a path is similar:
+        
+        Definition: For a path $\vec{c}:[a,b]\rightarrow \R^m$ and a vector function $\vec{F}:\R^m\rightarrow\R^m$ the integral of $\vec{F}$ along $\vec{C}$ is
+        \begin{align}
+            \int_{\vec{C}}\vec{F}d\vec{s} = \int_a^b \vec{F}(\vec{C}(t))\cdot\vec{C'}(t)dt
+        \end{align}
+        This can be used in occasion like calculating the work done by a force field.
+        
+        Example:$\vec{F}(x,y,z) = (-y,x,1)$ force field, and there is a particle moving along a three dimension path $\vec{C}(t)$ and similarly, when the path is perpendicular, work done(hence the integral) would also be zero.\\
+        
+        1) for $\vec{C}(t) = (t,t,t),\;t\in[0,1]$
+        \begin{align}
+            \int_{\vec{C}}\vec{F}d\vec{s} =& \int_0^1(-t,t,1)\cdot(1,1,1)dt\\
+            =&1\;(J)
+        \end{align}
+        2) for $\vec{C}(t) = (\cos(t),\sin(t),t),\;t\in[0,2\pi]$
+        \begin{align}
+            \int_{\vec{C}}\vec{F}d\vec{s} =& \int_0^2\pi(-\sin(t),\cos(t),1)\cdot(-\sin(t),\cos(t),1)dt\\
+            =&4\pi\;(J)
+        \end{align}
+        Properties of $\int_{\vec{C}}\vec{F}d\vec{s}$
+        \begin{align}
+            \int_{\vec{C}}\vec{F}d\vec{s} =& \int_a^b \vec{F}(\vec{C}(t))\cdot\vec{C'}(t)dt\\
+            =& \int_a^b |\vec{F}(\vec{C}(t))|\cdot|\vec{C'}(t)|\cos(\theta t)dt
+        \end{align}
+        The angle $\theta(t)$ is the angle formed by $\vec{F}(C(t))$, and $\vec{C'}(t)$ is always$< 90$ degree.
+        
+        If $\vec{F}(c(t)) \perp C'(t)$
+        \begin{align}
+             \int_{\vec{C}}\vec{F}d\vec{s} = 0
+        \end{align}
+        If $\vec{C_1}(t)$ and $\vec{C_2}(t)$ are different parametrization of the same path with the same orientation, then
+        \begin{align}
+            \int_{\vec{C_1}}\vec{F}d\vec{s} = \int_{\vec{C_2}}\vec{F}d\vec{s}
+        \end{align}
+        If opposite orientation
+        \begin{align}
+            \int_{\vec{C_1}}\vec{F}d\vec{s} = -\int_{\vec{C_2}}\vec{F}d\vec{s}
+        \end{align}
+        
         
 \end{document}

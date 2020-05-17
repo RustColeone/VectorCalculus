@@ -38,7 +38,22 @@ def AreaParallelogramVertices(VecA, VecB, VecC, VecD):
     print(Area)
     return Area
 
+def AreaTriangleVertices(VecA, VecB, VecC):
+    VecAns = np.cross(VecA - VecB, VecA - VecC)
+    Area = np.sqrt(np.dot(VecAns,VecAns))/2
+    print("Area: ", Area)
+    return Area
+
+def UnitVector(VecA):
+    VecLength = np.sqrt(np.dot(VecA,VecA))
+    VecAns = VecA / VecLength
+    print("Length: ", VecLength)
+    print("UnitVector: ", VecAns)
+
 #skewLinesDistance()
-projectionOnLine(np.array([3,3,-3]),np.array([5,-5,2]))
-orthogonalOnLine(np.array([3,3,-3]),np.array([5,-5,2]))
-AreaParallelogramVertices(np.array([-1,4,3]),np.array([0,6,7]),np.array([1,3,0]),np.array([2,5,4]))
+projectionOnLine(np.array([0,-3,-2]),np.array([0,0,-5]))
+orthogonalOnLine(np.array([0,-3,-2]),np.array([0,0,-5]))
+AreaTriangleVertices(np.array([0,0,0]),np.array([7,0,4]),np.array([7,0,6]))
+
+UnitVector(np.array([-10/29,4/29]))
+#AreaParallelogramVertices(np.array([0,0,0]),np.array([3,6,0]),np.array([6,0,5]),np.array([2,5,4]))
