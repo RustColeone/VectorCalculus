@@ -24,6 +24,14 @@
     \foreach \n in {1,...,#1}{\;\;\;\;}
 }
 \newcommand{\n}{$\\$}
+\newcommand{\VectorTwo}[2]{
+    \left[
+        \begin{array}{c}
+            #1\\
+            #2
+        \end{array}
+    \right]
+}
 \newcommand{\R}{\rm I\!R}
 \newcommand{\parallelsum}{\mathbin{\!/\mkern-5mu/\!}}
 
@@ -1215,5 +1223,102 @@
             \int_{\vec{C_1}}\vec{F}d\vec{s} = -\int_{\vec{C_2}}\vec{F}d\vec{s}
         \end{align}
         
+        Definition of Circulation: $\vec{C}:[a,b]\rightarrow\R^m$ a simple closed path, for a vector field F, the integration of this vector field along this simple closed path is called the circulation of $\vec{F}$ along C.
+        
+        For example, along a magnetic field, and such that C is a closed curve, the Ampere's law states that: $\int_c\vec{B}d\vec{s} = \mu I$ where $I$ is the current.
+        
+        Example: Take for example, the integration of the vector field $\vec{F_1(x,y)}=(-y,x)$ a simple closed path $\vec{C}(t) = (\cos(t),\sin(t)),\;t\in[0,2\pi]$, the circulation would be
+        \begin{align}
+            \vec{F_1} =& \int_{\vec{C}}\vec{F_1}d\vec{s}\\
+            =&\int_{0}^{2\pi}\VectorTwo{-\sin(t)}{cos(t)}\cdot\VectorTwo{-sin(t)}{cos(t)}dt
+            =&2\pi
+        \end{align}
+    
+    \subsection{Gradient Vector Field}
+        Recall the two different kinds of integrals along a path:
+        \begin{align*}
+            \int_{\vec{C}}\vec{F}d\vec{s} =& \int_a^b \vec{F}(\vec{C}(t))\cdot\vec{C'}(t)dt, & \int_{C}fds =& \int_a^b \vec{f}(\vec{C}(t))|\vec{C'}(t)|dt
+        \end{align*}
+        Definition: $\vec{F}:\R^m\rightarrow\R^m$ is called a gradient (conservative) vector field if there exists a function $f:\R^m\rightarrow\R$ such that $\vec{F} = \nabla f$ There are vector fields that are not gradient, recall that $Curl(\nabla f) = 0$:
+        \begin{align}
+            Curl(\nabla f) =& Curl(\frac{\sigma f}{\sigma x},\frac{\sigma f}{\sigma y})\\
+            =&\frac{\sigma{(\sigma f/\sigma y)}}{\sigma x}-\frac{\sigma{(\sigma f/\sigma x)}}{\sigma y}\\
+            =&0
+        \end{align}
+        Hence the curl test: if $\vec{F}:\R^m\rightarrow\R^m,\;curl\vec{F}\neq0$, then $\vec{F}$ cannot be a gradient curve.
+        
+        Theorem:: Suppose $\vec{F} = \nabla f,\;\vec{C}:[a,b]\rightarrow\R^m$ a path, then
+        \begin{align}
+            \int_{\vec{C}}\vec{F}d\vec{s} = \int_{\vec{C}}\nabla f d\vec{s} = f(\vec{C}(b))-f(\vec{C}(a))
+        \end{align}
+        Example: find the integration of a vector field $F = (2x,2e^z,2ye^z)$ along a curve $abc$ $\vec{C}(a) = [0,0,0],\;\vec{C}(b) = [0,-1,1],\;\vec{C}(c) = [1,-1,0]$
+        \begin{align}
+            \text{Observed that: } \vec{F} = \nabla (x^2+2ye^z) = \nabla f
+        \end{align}
+        Hence from theorem:
+        \begin{align}
+            \int_{\vec{C}}\vec{F}d\vec{s} = f(1,-1,0)-f(0,0,0) = -1
+        \end{align}
+        
+        Observations, for two different closed path with the same end points:
+        \begin{align}
+            \int_{\vec{C_1}}\nabla fds = \int_{\vec{C_2}}\nabla fds
+        \end{align}
+        equivalently, for a simple closed curve:
+        \begin{align}
+            \int_{\vec{C}}\vec{F}d\vec{s} = \int_{\vec{C}}\nabla f d\vec{s} = f(\vec{C}(b))-f(\vec{C}(a)) = 0
+        \end{align}
+        
+        Theorem: Hence given a vector field $\vec{F}$, the following statements about it are equivalent:
+        \begin{enumerate}
+            \item $\vec{F} = \nabla f$
+            \item $\int_{\vec{C_1}}\nabla fds = 0$
+            \item For any two paths $c_1\;c_2$ with the same end points, $\int_{\vec{C_1}}\vec{F}ds = \int_{\vec{C_2}}\vec{F}ds$
+        \end{enumerate}
+        
+        The curl of $\nabla f = 0$ is a necessary condition for gradient vector field, but is this true such that when $curl \vec{F} = 0$, $\vec{F} = \nabla f$? no
+        
+        Example: $\vec{F} = (\frac{-y}{x^2+y^2},\frac{x}{x^2+y^2},z)$ (its Curl = 0) defined on $u = \R^3$ (is not simple connected), but if we take a simple closed curve $\vec{c}(t) = (cos(t),sin(t),0)\;t\in[0,2\pi]$, and $\int_{\vec{C}}\vec{F}d\vec{s} \neq 0$, hence not a gradient vector field by theorem.
+        
+        Definition: Simply connected domains, n belongs to $\R^n$ is said to be simply connected if any closed path can be deformed continuously to a point, u is simple connected. For example, a disk is simply connected and a ring is not as it cannot be shrinked to a simple point.
+        
+        Theorem: if $\vec{F}:\R^m\rightarrow\R^m$ vector field defined on a simple connected domain and $curl\vec{F} = 0$, then $\vec{F}$ is a gradient vector field.
+        
+        Proof: supposed that $\vec{u}$ = Disk and $\vec{F}$ defined on u, curl $\vec{F} = 0$, then we claim there exists a function f(x,y) defined on u such that $\nabla f = \vec{F}$
+        
+        \begin{align}
+            \vec{F} =& (F_1(x,y),F_2(x,y)), (a,b) \in u\\
+            f(a,b) =& \int_{\vec{C_{a,b}}}\vec{F}d\vec{s}\text{, where }C_{a,b}\text{ is a line }(0,0)---(a,b)\\
+            =&\int_0^1(F_1(ta,tb),F_2(ta,tb))\cdot(a,b)dt\begin{cases}C_{a,b}(t) = (ta,tb) t\in[0,1]\end{cases}\\
+            =&f(a,b)\\
+        \end{align}
+        Claim: $\nabla F = \vec{F}$, check for $\frac{\sigma f}{\sigma a}F_1:$
+        \begin{align}
+            \frac{\sigma f(a,b)}{\sigma a} =& \frac{\sigma }{\sigma a}\int_0^1(F_1(ta,tb),F_2(ta,tb))\cdot(a,b)dt\\
+            =& \int_0^1(F_1(ta,tb) + a\frac{\sigma F_1}{\sigma x}\cdot\frac{\sigma x}{\sigma a}+ b\frac{\sigma F_2}{\sigma x}\cdot\frac{\sigma x}{\sigma a} dt,\;x=ta,\;\frac{\sigma x}{\sigma a}=t\\
+            Curl \vec{F} =& \frac{\sigma F_2}{\sigma x} - \frac{\sigma F_1}{\sigma y} = 0\\
+            =& \int_0^1(F_1(ta,tb) + at\frac{\sigma F_1}{\sigma x}+ bt\frac{\sigma F_1}{\sigma x}dt\\
+            &x=at, \frac{\sigma x}{\sigma t} = a, y = bt, \frac{\sigma y}{\sigma t} = b\\
+            =&\int_0^1(F_1(ta,tb) + t\frac{\sigma F_1}{\sigma x}\cdot\frac{\sigma x}{\sigma t}+ t\frac{\sigma F_1}{\sigma y}\cdot\frac{\sigma y}{\sigma t} dt\\
+            =&\int_0^1(F_1(a,b)+t \frac{df}{dt})dt\\
+            =&\int_0^1\frac{d}{dt}(t F_1(ta,tb))dt\\
+            =&(t F_1(ta,tb))\\
+            \frac{\sigma f}{\sigma a} = F_1(a,b)\\
+        \end{align}
+        Rest can be proved similarly.
+        
+        Next for arbitrary domain u, assume that $curl\vec{F} = 0$ and we want to show that the integral for any two path with the same end points $\int_{\vec{C_1}}\vec{F}d\vec{s} = \int_{\vec{C_2}}\vec{F}d\vec{s}$
+        
+        Idea: deform $C_1$ to $C_2$ such that any 2 adjacent curves can be covered by a series of small disks. Because for each disk, we shown $\int F$ independent of paths.
+        
+        Then
+        \begin{align}
+            \int_{c_1}\vec{F}ds = \sum_i \int_{P_i}\vec{F}ds = \sum_i \int_{Q_i}\vec{F}ds =  \int_{C_3}\vec{F}ds
+        \end{align}
+        Similarly: 
+        \begin{align}
+            \int_{c_1}\vec{F}ds = \int_{C_3}\vec{F}ds = \int_{C_n}\vec{F}ds =  \int_{C_2}\vec{F}ds
+        \end{align}
+        so $\int\vec{F}$ is indenependent of choice of paths, by theorem 1, $\vec{F}$ is a gradient vector field.
         
 \end{document}
