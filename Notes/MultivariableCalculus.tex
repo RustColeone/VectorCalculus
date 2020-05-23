@@ -1320,5 +1320,93 @@
             \int_{c_1}\vec{F}ds = \int_{C_3}\vec{F}ds = \int_{C_n}\vec{F}ds =  \int_{C_2}\vec{F}ds
         \end{align}
         so $\int\vec{F}$ is indenependent of choice of paths, by theorem 1, $\vec{F}$ is a gradient vector field.
+    \subsection{Double Integrals}
+        Green's Theorem: the circulation of $\vec{F}$ along a closed curve = Double integral of curl $(\vec{F})$\\
         
+        $D\subseteq \R^2$ is a domain, we say D is closed if it contains its boundary in D. If there exists a disk B(r) of radius r such that $D \subset B(r)$.\\
+        
+        Definition: f(x,y) is continuous function defined on a bounded and closed domain D, the double integral denoted by $vol =\iint_D f(x,y) dA$ is supposed to represent the volume of the solid bounded by the function. The idea is to use the Riemann sum, $R_n = \sum^n_{i=1}f(xi,yi)\Delta x\cdot\Delta y$, as $\lim_{n\rightarrow \infty} R_n$ We can compute these integrals as normal integrals one by one.\\
+        
+        Example: \\1)For a nice domain $D = [a,b]\times[c,d]$, $\iint_R 6x^2 y dA$ = ? By Fubinis theorem:
+        \begin{align}
+            \iint_R 6x^2 y dA =& \int^4_0 \left(\int^1_{-1} 6x^2ydx \right) dy\\
+            =&\int^4_0 \left.\frac{6yx^3}{3}\right|^1_{-1} dy
+            =&\int^4_0 4y dy\\
+            =& \left.2y^2\right|^4_0
+            =& 32\\
+            \text{Alternate method:} &= \left(\int^1_-1 6x^2 dx\right)\cdot\left(\int^4_0 y dy \right)\\
+            =& 2x^3|^1_-1 \cdot \frac{y^2}{2}|^4_0\\
+            =& 32
+        \end{align}
+        Remark: if $f(x,y)=g(x)\times h(y)$, $\iint f(x,y)=(\int g(x)dx)\cdot(\int h(y)dy)\\$
+        
+        2) For a domain $x \in [a,b],\;y\in[p(x),q(x)]$, evaluate $\iint_D e^{2x+y}dA$, D is the region bounded by the line y = 2x and y = x, x = 1 and x = 2.
+        \begin{align}
+            &\int^2_1 \int^{2x}_{x} e^{2x+y} dy dx\\
+            =& \int^2_1 (e^2x\cdot e^y |^{2x}_{x}) dx\\
+            =& \int^2_1 e^{4x}-e^{3x} dx\\
+            =& \left.\frac{e^4x}{4} - \frac{e^3x}{3} \right|^2_1
+        \end{align}
+        3) Type 2 elementary region $y\in[c,d],\; x\in[p(y),q(y)]$, evaluate $\iint_D 2ydA$, D is the region bounded by the line $y = x-6$ and $y^2 = x$. and by founding boundaries, $y\in[-2,3],\;x\in[y^2, y + 6]$
+        \begin{align}
+            &\int^3_{-2} \int^{y+6}_{y^2} 2y dx dy\\
+            =& \int^3_{-2} 2y(y+6-y^2) dy\\
+            =& -\frac{y^4}{2} + \frac{2y^3}{3}+6y^2|^3_{-2}\\
+            =& ...
+        \end{align}
+        4) We can change the order of integration by Fubini's theorem, for example, evaluate $\int^{1}_{0} \int^{\sqrt[3]{x}}_{x} e^{x/y}dydx$, we don't know the antiderivative of $e^{x/y}$ with respect to y, however, we can change the order
+        \begin{align}
+            \int^{1}_{0} \int^{\sqrt[3]{x}}_{x} e^{x/y} =& \int^{1}_{0} \int^{y}_{y^3} e^{x/y}dxdy\\
+            =& \int^{1}_{0} ye^{x/y}|^y_{y^3} dy\\
+            =& \int^{1}_{0} ye^{x/y}|^y_{y^3} dy\\
+            =& \dots\\
+            =& \frac{1}{2}
+        \end{align}
+        Some properties of double integrals.
+        \begin{enumerate}
+            \item Linearity
+            \item $D = D_1\bigsqcup D_2$, then $\iint_D f dA = \iint_{D_1} f dA + \iint_{D_2} f dA$
+            \item $m\leq f(x,y)\leq M$, then $m\cdot Area(D)\leq\iint_D f(x,y)dA\leq M\cdot Area(D)$
+        \end{enumerate}
+        Change of Variables(substitution) in two dimension, $(x,y)\in \R^2 \rightarrow (u,v) \in \R^2$, $(T(x,y) = (u(x,y),v(x,y)))$:
+        \begin{align}
+            &\iint_D f(x,y) dxdy\\
+            =& \iint_{T(D)} f(x(u,v), y(u,v)) \left|\begin{array}{cc}
+                 \frac{\sigma x}{\sigma u} & \frac{\sigma x}{\sigma v}  \\
+                 \frac{\sigma y}{\sigma u} & \frac{\sigma y}{\sigma v}
+            \end{array}\right|dudv
+        \end{align}
+        Example: Find $\iint_D (3x+6y)^2 dA,$ where D is the region enclosed by the four lines $x\pm2y = \pm2$. By substitution, u = x+2y, v = x-2y.
+        \begin{align}
+            &\iint_D (3x+6y)^2 dA\\
+            =& \iint_{T(D)} (3\frac{u+v}{2} + 6\frac{u-v}{4})^2 \left|\begin{array}{cc}
+                 \frac{1}{2} & \frac{1}{2}  \\
+                 \frac{1}{4} & \frac{1}{4}
+            \end{array}\right|dudv\\
+            =& \int^2_{-2}\int^2_{-2} \frac{(3u)^2}{4} dudv\\
+            =&48
+        \end{align}
+        Next, A special case of change of variables: by polar coordinate, $x= r\cos(\theta), y= r\sin(\theta), r=\sqrt{x^2+y^2}, \tan(\theta) = \frac{y}{x}\\$
+        Example: Find the area of the unit disk D:
+        
+        1) f = 1
+        \begin{align}
+            Area(D) =& \iint_D 1dA\\
+            =& \int^1_{-1}\int^{\sqrt{1-x^2}}_{-\sqrt{1-x^2}} 1 dydx\\
+            =& \int^{2\pi}_0 \int^{1}_0 1 \left|\begin{array}{cc}
+                 \frac{\sigma x}{\sigma u} & \frac{\sigma x}{\sigma v}  \\
+                 \frac{\sigma y}{\sigma u} & \frac{\sigma y}{\sigma v}
+            \end{array}\right|drd\theta\\
+            =& \int^{2\pi}_0 \int^{1}_0 1 \times r drd\theta\\
+            =& \dots\\
+            =& \pi
+        \end{align}
+        Infact, $dxdy = rdrd\theta\\$
+        2)$e^{x^2+y^2}$
+        \begin{align}
+            Area(D) =& \iint_D e^{x^2+y^2}dA\\
+            =& \int^{2\pi}_{0}\int^{1}_{0} e^{r^2} rdrd\theta\\
+            =& \frac{1}{2} e^{r^2}|^1_0 (2\pi-0)\\
+            =& (e-1)\pi
+        \end{align}
 \end{document}
